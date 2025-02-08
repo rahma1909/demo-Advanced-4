@@ -1,27 +1,60 @@
 ﻿using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 
 namespace demo
 {
-    class stringequality : IEqualityComparer
-    {
-        public new bool Equals(object? x, object? y)
-        {
-            string? strx = x as string;
-            string? stry = y as string;
 
-            return strx?.ToLower().Equals(stry) ?? (stry is null ? true : false);
+    #region generic string equality
+    class stringequality : IEqualityComparer<string>
+    {
+       
+
+        public bool Equals(string? x, string? y)
+        {
+        
+
+            return x?.ToLower().Equals(y) ?? (y is null ? true : false);
         }
 
-        public int GetHashCode(object obj)
+     
+        public int GetHashCode([DisallowNull] string other)
         {
-            string? other = obj as string;
-
             if (other is null)
 
                 return 0;
             return other.ToLower().GetHashCode();
         }
     }
+    #endregion
+
+
+
+
+    #region non generic stringequality
+    //class stringequality : IEqualityComparer
+    //{
+    //    public new bool Equals(object? x, object? y)
+    //    {
+    //        string? strx = x as string;
+    //        string? stry = y as string;
+
+    //        return strx?.ToLower().Equals(stry) ?? (stry is null ? true : false);
+    //    }
+
+    //    public int GetHashCode(object obj)
+    //    {
+    //        string? other = obj as string;
+
+    //        if (other is null)
+
+    //            return 0;
+    //        return other.ToLower().GetHashCode();
+    //    }
+    //} 
+    #endregion
+
+
+    #region old syntax
     //class customhashcodeprovider : IHashCodeProvider
     //{
     //    public int GetHashCode(object obj)
@@ -29,7 +62,7 @@ namespace demo
     //        string? other = obj as string;
 
     //        if (other is null)
-            
+
     //            return 0;
     //        return other.ToLower().GetHashCode();
     //    }
@@ -44,7 +77,8 @@ namespace demo
 
     //        return strx?.ToLower().CompareTo(stry) ?? (stry is null ? 0 : -1);
     //    }
-    //}
+    //} 
+    #endregion
     internal class Program
     {
         static void Main(string[] args)
@@ -201,6 +235,100 @@ namespace demo
             //{
             //    Console.WriteLine($"{person.Key}::::{person.Value}");
             //}
+
+            #endregion
+
+            #region generic hashtable-dictionary -ex01
+
+
+            //Dictionary<string, int> note = new Dictionary<string, int>()
+            //{
+            //    {"ahmed",333 },
+            //    {"omar",333 },
+            //    {"mo",333 },
+            //};
+
+            //Dictionary<string, int> note02 = new Dictionary<string, int>(note);
+
+
+
+
+            ////note.Add("ahmed",333);//valid
+
+
+
+
+            //foreach (var person in note)//bec inside it getenumrator
+            //{
+            //    Console.WriteLine($"{person.Key}:::{person.Value}");
+            //}
+            //***************************************************************
+
+            //KeyValuePair<string, int>[] keyvalue =
+            //{
+            //    new KeyValuePair<string, int>("mona",1232),
+            //    new KeyValuePair<string, int>("hamdy",1232),
+            //};
+            //Dictionary<string, int> note = new Dictionary<string, int>(new stringequality())
+            //{
+            //    {"ahmed",333 },
+            //    {"omar",333 },
+            //    {"mo",333 },
+            //};
+
+            //Dictionary<string, int> note02 = new Dictionary<string, int>(note,new stringequality());
+            //Dictionary<string, int> note02 = new Dictionary<string, int>(keyvalue);//ienumrable
+
+
+
+
+
+            //note.Add("ahmed",333);//invalid : An item with the same key has already been added.
+
+            #region add
+
+            //note.Add("ahmed",222);//unsafe
+
+            //if (!note.ContainsKey("ahmed"))
+            //    note.Add("ahmed", 111);//safe
+            //else
+            //{
+            //    note["ahmed"] = 333;//update if the value exist using indexer
+            //}
+
+            //if(!note.TryAdd("ahmed", 333))
+            // {
+            //     //update
+            //     note["ahmed"] = 333;
+            // }
+
+            //note["ahmed"] = 888;//using indexer update and set
+
+
+
+            #endregion
+
+            #region get
+            //Console.WriteLine(note["ahmed"]);//unsafe
+
+            ////safe
+            //if (note.ContainsKey("ahmed"))
+            //{
+            //    Console.WriteLine(note["ahmed"]);
+            //}
+
+            //note.TryGetValue("ahmed", out int value);
+            //Console.WriteLine($"value: {value}");
+
+
+            #endregion
+
+
+            //foreach (KeyValuePair<string, int> person in note)//bec inside it getenumrator
+            //{
+            //    Console.WriteLine($"{person.Key}:::{person.Value}");
+            //}
+
 
             #endregion
 
