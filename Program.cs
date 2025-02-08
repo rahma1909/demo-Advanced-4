@@ -333,6 +333,45 @@ namespace demo
             #endregion
 
 
+            #region generic hashtable-dictionary -ex02
+
+
+            //Dictionary<employee, string> employees = new Dictionary<employee, string>(new employeeequalitycomar())
+            //{
+            //    { new employee(1,"ahmed",12356),"employee with id 1" },
+            //    { new employee(10,"omar",1236),"employee with id 10" },
+
+
+            //};
+
+
+            //employees.Add(new employee(1, "ahmed", 12356), "employee with id 1");// An item with the same key has already been added. Key: id:1,name:ahmed,salary:12356
+
+
+            //employee emp01 = new employee(10, "ahmed", 2000);
+
+            //Dictionary<employee, string> employees = new Dictionary<employee, string>()
+            //{
+            //    { emp01,"employee with id 1" },
+            //    { new employee(10,"omar",1236),"employee with id 10" },
+
+
+            //};
+
+
+       
+
+            //emp01.id = 50;//must be immutable
+
+            //employees.Add(new employee(50, "eyad", 12356), "employee with id 50");//key must be immutable type
+            //foreach (var item in employees)
+            //{
+            //    Console.WriteLine($"{item.Key}");
+            //}
+
+            #endregion
+
+
 
         }
     }
