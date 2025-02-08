@@ -7,6 +7,14 @@ using System.Threading.Tasks;
 
 namespace demo
 {
+
+    class empicomparer : IComparer<employee>
+    {
+        public int Compare(employee? x, employee? y)
+        {
+            return x?.name.Length.CompareTo(y?.name.Length) ??-1 ;
+        }
+    }
     class employeeequalitycomar : IEqualityComparer<employee>
     {
         public bool Equals(employee? x, employee? y)

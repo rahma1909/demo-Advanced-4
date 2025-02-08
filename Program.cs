@@ -27,9 +27,6 @@ namespace demo
     }
     #endregion
 
-
-
-
     #region non generic stringequality
     //class stringequality : IEqualityComparer
     //{
@@ -78,6 +75,18 @@ namespace demo
     //        return strx?.ToLower().CompareTo(stry) ?? (stry is null ? 0 : -1);
     //    }
     //} 
+    #endregion
+
+    #region sorted dictionary
+    class stringcomparerdesc : IComparer<string>
+    {
+        public int Compare(string? x, string? y)
+        {
+            return y?.CompareTo(x) ?? (x is null ? 0 : -1);
+        }
+    }
+
+
     #endregion
     internal class Program
     {
@@ -359,7 +368,7 @@ namespace demo
             //};
 
 
-       
+
 
             //emp01.id = 50;//must be immutable
 
@@ -370,6 +379,58 @@ namespace demo
             //}
 
             #endregion
+
+
+            #region sorted dictionary- generic collection [binary search tree]
+            //SortedDictionary<string, int> sortednode = new SortedDictionary<string, int>();
+
+
+            //sortednode.Add("ahmed", 10);
+            //sortednode.Add("omnia", 30);
+            //sortednode.Add("rahma", 20);
+            //sortednode.Add("mahmoud", 5);
+
+            //foreach (var person in sortednode)
+            //{
+            //    Console.WriteLine($"{person.Key}, {person.Value}");//sorted
+            //}
+
+
+            //**********************************
+            #region ex01
+            //SortedDictionary<string, int> sortednode = new SortedDictionary<string, int>( new stringcomparerdesc());//desending
+
+
+            //sortednode.Add("ahmed", 10);
+            //sortednode.Add("omnia", 30);
+            //sortednode.Add("rahma", 20);
+            //sortednode.Add("mahmoud", 5);
+
+            //foreach (var person in sortednode)
+            //{
+            //    Console.WriteLine($"{person.Key}, {person.Value}");//sorted
+            //} 
+            #endregion
+
+            #region ex02
+            //SortedDictionary<employee, string> sortedemp = new SortedDictionary<employee, string>(new empicomparer())//based on name length
+            //{
+            //    { new employee(1,"ahmed",2_000) ,"emp 1"},
+            //    { new employee(3,"mo",2_000) ,"emp 2"},
+            //    { new employee(2,"weal",2_000) ,"emp 3"},
+                
+            
+            //};
+
+            //foreach (var person in sortedemp)
+            //{
+            //    Console.WriteLine($"{person.Key}, {person.Value}");
+            //}
+            #endregion
+
+            #endregion
+
+
 
 
 
