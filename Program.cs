@@ -7,16 +7,16 @@ namespace demo
     #region generic string equality
     class stringequality : IEqualityComparer<string>
     {
-       
+
 
         public bool Equals(string? x, string? y)
         {
-        
+
 
             return x?.ToLower().Equals(y) ?? (y is null ? true : false);
         }
 
-     
+
         public int GetHashCode([DisallowNull] string other)
         {
             if (other is null)
@@ -134,8 +134,8 @@ namespace demo
             //Refree R1 = new Refree()
             //{
             //    Name = "grisha"
-            
-             
+
+
             //};
 
             ////subscription
@@ -418,8 +418,8 @@ namespace demo
             //    { new employee(1,"ahmed",2_000) ,"emp 1"},
             //    { new employee(3,"mo",2_000) ,"emp 2"},
             //    { new employee(2,"weal",2_000) ,"emp 3"},
-                
-            
+
+
             //};
 
             //foreach (var person in sortedemp)
@@ -430,7 +430,24 @@ namespace demo
 
             #endregion
 
+            #region generic collections- sorted list
 
+            //SortedList<string, int> sortednote = new SortedList<string, int>()
+            //{
+            //    {"ahmed",333 },
+            //    {"omar",333 },
+            //    {"mo",333 },
+            //};
+
+            //Console.WriteLine(sortednote.GetValueAtIndex(0));
+            //Console.WriteLine(sortednote.GetKeyAtIndex(0));
+            
+            
+            //foreach (var item in sortednote)
+            //{
+            //    Console.WriteLine($"{item.Key}::{item.Value}");
+            //}
+            #endregion
 
 
 
