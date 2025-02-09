@@ -88,6 +88,21 @@ namespace demo
 
 
     #endregion
+
+    #region sorted list ex02
+    class descsotednumcomparer : IComparer<int>
+    {
+        public int Compare(int x, int y)
+        {
+            //return -x.CompareTo(y);//descinding
+            //return y.CompareTo(x);//descinding
+            return y - x;//sorting descinding
+        }
+    }
+
+
+
+    #endregion
     internal class Program
     {
         static void Main(string[] args)
@@ -441,12 +456,29 @@ namespace demo
 
             //Console.WriteLine(sortednote.GetValueAtIndex(0));
             //Console.WriteLine(sortednote.GetKeyAtIndex(0));
-            
-            
+
+
             //foreach (var item in sortednote)
             //{
             //    Console.WriteLine($"{item.Key}::{item.Value}");
             //}
+            #endregion
+
+            #region generic collections- sorted list ex02
+
+            //SortedList<int, string> sortednums = new SortedList<int, string>(new descsotednumcomparer())
+            //{
+            //    { 2,"two"},
+            //    { 3,"three"},
+            //    { 1,"one"},
+            //};
+
+
+            //foreach (var item in sortednums)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
             #endregion
 
 
