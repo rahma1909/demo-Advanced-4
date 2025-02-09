@@ -103,6 +103,26 @@ namespace demo
 
 
     #endregion
+
+    #region ex03 on hashset
+    class movieequality : IEqualityComparer<movie>
+    {
+        public bool Equals(movie? x, movie? y)
+        {
+            return x?.id.Equals(y?.id) ?? (y?.id is null ? true : false);
+
+        }
+
+        public int GetHashCode([DisallowNull] movie obj)
+        {
+            return obj.id.GetHashCode();
+        }
+    }
+
+
+
+
+    #endregion
     internal class Program
     {
         static void Main(string[] args)
@@ -480,6 +500,140 @@ namespace demo
             //}
 
             #endregion
+
+            #region generic collections- hashset[hashtable machanism]
+
+            #region ex01
+            //HashSet<employee> employees = new HashSet<employee>()
+            //{
+            //    { new employee(1,"ahmed",12356) },
+            //    { new employee(10,"omar",1236) },
+
+
+            //};
+
+            //foreach (var item in employees)
+            //{
+            //    Console.WriteLine(item);
+
+            //} 
+            #endregion
+
+            #region ex02
+
+            //int[] arr = [1, 2, 3, 5, 6, 2, 3, 1, 6, 4, 8, 9];
+            //HashSet<int> nums = new HashSet<int>(arr)
+            //{
+
+            //};
+
+
+            //foreach (var item in nums)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+
+
+            #endregion
+
+            #region ex03
+            //HashSet<movie> movies = new HashSet<movie>(new movieequality())
+            //{
+            //    new movie(101,"black adam",120),
+
+            //    new movie(11,"quiet place",120),
+            //    new movie(102,"castt away",120),
+
+            //};
+
+            //movies.Add(new movie(101, "avatar", 200));
+
+
+            //foreach (var item in movies)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+
+            #endregion
+
+            #region ex04
+
+            //int[] arr = [1, 2, 3, 4, 5];
+            //HashSet<int> set01 = new HashSet<int>(arr)
+            //{
+
+            //};
+
+            //HashSet<int> set02 = new HashSet<int>()
+
+            //    {1,2,3,4,5,6,7,8,9 ,10};
+
+            ////nums.TryGetValue(1, out int value);
+            ////Console.WriteLine(value);//لو موجوده هيرجعها ف ال output parameter
+
+
+            ////with family
+            ////set02.ExceptWith(set01);
+            ////set02.SymmetricExceptWith(set01);
+
+            ////set02.IntersectWith(set01);
+            ////set02.UnionWith(set01);
+            ////set02.Concat(set01);
+
+
+            ////Console.WriteLine(set01.IsSubsetOf(set02));   //true
+            ////Console.WriteLine(set01.IsProperSubsetOf(set02));   //true
+
+            ////Console.WriteLine(set01.IsSupersetOf(set02));   //false
+            ////Console.WriteLine(set01.IsProperSupersetOf(set02));   //false
+
+            ////Console.WriteLine(set02.Overlaps(set01));//true
+
+
+            ////Console.WriteLine(set02.SetEquals(set01));//false
+
+            ////Console.WriteLine(set01.RemoveWhere());
+
+
+            //foreach (var item in set02)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+
+            #endregion
+
+            #region ex05
+
+
+            //HashSet<movie> movies01 = new HashSet<movie>(new movieequality())
+            //{
+            //    new movie(101,"black adam",120),
+
+            //    new movie(11,"quiet place",120),
+            //    new movie(102,"castt away",120),
+
+            //};
+
+            //HashSet<movie> movies02 = new HashSet<movie>(new movieequality())
+            //{
+            //    new movie(101,"black adam",120),
+
+            //    new movie(11,"quiet place",120),
+                
+
+            //};
+
+            //Console.WriteLine(movies01.Overlaps(movies02));//true
+
+            #endregion
+            #endregion
+
 
 
 
