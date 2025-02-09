@@ -625,7 +625,7 @@ namespace demo
             //    new movie(101,"black adam",120),
 
             //    new movie(11,"quiet place",120),
-                
+
 
             //};
 
@@ -634,7 +634,43 @@ namespace demo
             #endregion
             #endregion
 
+            #region generic collections- sortedset (balanced binary search tree)
 
+            #region ex01
+            //  SortedSet<int> nums = new SortedSet<int>()
+            //  {
+            //      7,4,5,6,9,2,3,10
+            //  };
+
+            ////********************************************
+            //  foreach (var item in nums)
+            //  {
+            //      Console.WriteLine(item);
+            //  }
+
+            #endregion
+
+            #region ex02
+
+            //SortedSet<movie> movies = new SortedSet<movie>(new moviecomparer())//based on name sorted
+            //{
+            //    new movie(101,"black adam",120),
+
+            //    new movie(11,"quiet place",120),
+            //    new movie(102,"castt away",120),
+            //};
+
+            //movie minmovie = movies.Min!;
+            //movie maxmovie = movies.Max!;
+
+            //Console.WriteLine(maxmovie);
+
+            ////foreach (var item in movies)
+            ////{
+            ////    Console.WriteLine(item);
+            ////} 
+            #endregion
+            #endregion
 
 
         }

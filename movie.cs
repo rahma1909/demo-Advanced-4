@@ -8,9 +8,15 @@ using System.Threading.Tasks;
 namespace demo
 {
 
- 
+    class moviecomparer : IComparer<movie>
+    {
+        public int Compare(movie? x, movie? y)
+        {
+            return x?.title.CompareTo(y?.title)??(y?.title is null? 0:-1);
+        }
+    }
 
-    internal class movie:IEquatable<movie>
+    internal class movie:IEquatable<movie>,IComparable<movie>
     {
      
 
@@ -37,6 +43,13 @@ namespace demo
         public override int GetHashCode()
         {
             return HashCode.Combine(id, title, price);
+        }
+
+        public int CompareTo(movie? other)
+        {
+            if (other is null) return 1;
+
+            return id.CompareTo(other.id);
         }
     }
 }
